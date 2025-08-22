@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'language_provider.dart';
 import './carousel.dart';
+import './hot_events.dart';
 
 class Index extends StatefulWidget {
   @override
@@ -78,29 +79,10 @@ class _IndexState extends State<Index> with TickerProviderStateMixin {
                   ),
                 ),
                 Expanded(
-                  flex: 3,
+                  flex: 4,
                   child: SizedBox(
-                    height: 50.0,
-                    child: TextField(
-                      decoration: InputDecoration(
-                        filled: true,
-                        fillColor: Color(0xFFF6F6F6),
-                        hintText: '请输入用户名',
-                        border: InputBorder.none,
-                        contentPadding:
-                            EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-                        enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(25),
-                          borderSide: BorderSide.none,
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(25),
-                        ),
-                      ),
-                      onChanged: (value) {
-                        print('输入内容: $value');
-                      },
-                    ),
+                    height: 80.0,
+                    child: SearchInput(),
                   ),
                 ),
                 Expanded(

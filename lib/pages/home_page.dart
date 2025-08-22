@@ -83,7 +83,7 @@ class _HomePageState extends State<HomePage> {
       floatingActionButton: FloatingActionButton(
         backgroundColor: Color(0xFF1c3c31),
         child: Icon(
-          Icons.add,
+          Icons.settings,
           color: Color(0xFFc4f8e7),
         ),
         onPressed: () {
@@ -119,10 +119,17 @@ class _HomePageState extends State<HomePage> {
             },
           ),
           ListTile(
-            leading: Icon(Icons.help),
-            title: Text('帮助'),
+            leading: Icon(Icons.video_call),
+            title: Text('视频'),
             onTap: () {
-              Navigator.pop(context);
+              Navigator.pushNamed(
+                context,
+                '/video',
+                arguments: {
+                  'videoUrl':
+                      'https://cdn-www.huorong.cn/Public/Uploads/uploadfile/files/20240418/0418gongnengdianjihe.mp4',
+                },
+              );
             },
           ),
           ListTile(

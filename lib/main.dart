@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import './pages/language_provider.dart';
 import './pages/home_page.dart';
 import './pages/second_page.dart';
+import './video.dart';
 
 void main() {
   runApp(
@@ -28,6 +29,13 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (context) => HomePage(),
         '/second': (context) => SecondPage(),
+        '/video': (context) {
+          // 从路由参数中获取视频地址
+          final arguments = ModalRoute.of(context)!.settings.arguments
+              as Map<String, dynamic>?;
+          final videoUrl = arguments?['videoUrl'] as String? ?? '';
+          return MyVideoPlayer(videoUrl: videoUrl);
+        },
       },
     );
   }
