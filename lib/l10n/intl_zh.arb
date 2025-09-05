@@ -1,0 +1,10 @@
+{
+  "hello": "你好",
+  "welcome": "欢迎使用Flutter",
+  "settings": "设置",
+  "language": "语言",
+  "theme": "主题",
+  "logout": "退出登录",
+  "userWelcome": "你好{name}！",
+  "unreadMessages": "你有{count}条未读消息"
+}

@@ -4,10 +4,6 @@ import 'package:provider/provider.dart';
 
 import 'count.dart';
 
-// void main() {
-//   runApp(MyApp());
-// }
-
 class Word extends StatelessWidget {
   const Word({super.key});
 

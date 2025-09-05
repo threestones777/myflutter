@@ -35,7 +35,8 @@ class SecondPage extends StatelessWidget {
                 ),
               ),
               child: Center(
-                  child: Text('设置',
+                  child: Text('王振磊',
+                      textAlign: TextAlign.center,
                       style: TextStyle(color: Colors.white, fontSize: 36))),
             ),
             Container(

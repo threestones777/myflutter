@@ -92,8 +92,7 @@ class _MyVideoPlayerState extends State<MyVideoPlayer> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            SizedBox(height: 50),
-            Container(height: 500, child: _buildVideoContent()),
+            SizedBox(height: 400, child: _buildVideoContent()),
           ],
         ),
       ),
@@ -102,7 +101,11 @@ class _MyVideoPlayerState extends State<MyVideoPlayer> {
 
   Widget _buildVideoContent() {
     if (_isLoading) {
-      return const CircularProgressIndicator();
+      return Center(
+          child: const CircularProgressIndicator(
+        valueColor: AlwaysStoppedAnimation<Color>(Color(0xFF1c3c31)), // 进度条颜色
+        backgroundColor: Color(0xFFc4f8e7), // 背景色
+      ));
     }
 
     if (_errorMessage != null) {

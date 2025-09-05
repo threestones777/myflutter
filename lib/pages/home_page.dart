@@ -70,7 +70,7 @@ class _HomePageState extends State<HomePage> {
           BottomNavigationBarItem(icon: Icon(Icons.home), label: '首页'),
           BottomNavigationBarItem(icon: Icon(Icons.list), label: '列表'),
           BottomNavigationBarItem(icon: Icon(Icons.post_add), label: '表单'),
-          BottomNavigationBarItem(icon: Icon(Icons.person), label: '我的'),
+          BottomNavigationBarItem(icon: Icon(Icons.video_call), label: '我的视频'),
         ],
         selectedItemColor: Color(0xFFc4f8e7),
         unselectedItemColor: Colors.white,
@@ -119,17 +119,34 @@ class _HomePageState extends State<HomePage> {
             },
           ),
           ListTile(
-            leading: Icon(Icons.video_call),
-            title: Text('视频'),
+            leading: Icon(Icons.settings),
+            title: Text('照片'),
+            onTap: () {
+              Navigator.pushNamed(context, '/photo');
+            },
+          ),
+          ListTile(
+            leading: Icon(Icons.settings),
+            title: Text('网页'),
             onTap: () {
               Navigator.pushNamed(
                 context,
-                '/video',
+                '/html',
                 arguments: {
-                  'videoUrl':
-                      'https://cdn-www.huorong.cn/Public/Uploads/uploadfile/files/20240418/0418gongnengdianjihe.mp4',
+                  'title': "笔记",
+                  'url': "https://share.note.youdao.com/s/Fj4O4upm",
                 },
               );
+            },
+          ),
+          ListTile(
+            leading: Icon(Icons.video_call),
+            title: Text('视频'),
+            onTap: () {
+              setState(() {
+                Navigator.pop(context);
+                _currentIndex = 3;
+              });
             },
           ),
           ListTile(

@@ -57,7 +57,7 @@ class _ProfilePageState extends State<ProfilePage> {
       child: Column(
         children: [
           Container(
-            width: double.infinity,
+            width: double.infinity, // 宽度充满父容器
             height: 200,
             padding: const EdgeInsets.all(20.0),
             decoration: BoxDecoration(
@@ -78,38 +78,53 @@ class _ProfilePageState extends State<ProfilePage> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 ClipOval(
-                  child: Image.asset("assets/1.png", width: 60.0),
+                  child: Image.asset("assets/logo.jpg", width: 60.0),
                 ),
                 const SizedBox(height: 10),
-                const Text('内容文字',
+                const Text('视频',
                     style: TextStyle(
                         color: Colors.white,
                         fontSize: 36,
                         fontWeight: FontWeight.w800)),
-                const Text('阿斯UN搜没下来',
-                    style: TextStyle(color: Color(0xFFc4f8e7), fontSize: 14)),
+                const Text('阿斯UN搜没下来司机时代楷模那些',
+                    style: TextStyle(color: Color(0xFFc4f8e7), fontSize: 12)),
               ],
             ),
           ),
-          const SizedBox(height: 20),
-
-          // 使用 GridView 替换 Row
+          SizedBox(height: 20),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0),
-            child: GridView.count(
-              shrinkWrap: true,
-              physics: const NeverScrollableScrollPhysics(),
-              crossAxisCount: 1, // 每行2个
-              crossAxisSpacing: 16.0,
-              mainAxisSpacing: 16.0,
-              childAspectRatio: 1.2,
-              children: widget.list.map((item) {
-                return _buildProductCard(item, context);
-              }).toList(),
+            padding: const EdgeInsets.all(0),
+            child: Row(
+              children: [
+                Expanded(
+                  child: Wrap(
+                    spacing: 0,
+                    runSpacing: 16.0,
+                    alignment: WrapAlignment.spaceBetween,
+                    children: widget.list.asMap().entries.map((entry) {
+                      final index = entry.key;
+                      final item = entry.value;
+                      final isOddIndex =
+                          index % 2 == 0; // 0, 2, 4... 是奇数索引（从0开始）
+
+                      return FractionallySizedBox(
+                        widthFactor: 0.5,
+                        child: Padding(
+                          padding: isOddIndex
+                              ? const EdgeInsets.fromLTRB(
+                                  16, 0, 8, 0) // 奇数项：左16右8
+                              : const EdgeInsets.fromLTRB(
+                                  8, 0, 16, 0), // 偶数项：左8右16
+                          child: _buildProductCard(item, context),
+                        ),
+                      );
+                    }).toList(),
+                  ),
+                ),
+              ],
             ),
           ),
-
-          const SizedBox(height: 20),
+          SizedBox(height: 20),
         ],
       ),
     );
@@ -134,7 +149,7 @@ class _ProfilePageState extends State<ProfilePage> {
           borderRadius: BorderRadius.circular(12),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.1),
+              color: Color.fromRGBO(0, 0, 0, 0.1),
               blurRadius: 8,
               offset: const Offset(0, 4),
             ),
@@ -145,7 +160,7 @@ class _ProfilePageState extends State<ProfilePage> {
           children: [
             // 产品图片区域
             Container(
-              height: 250,
+              height: 150,
               decoration: BoxDecoration(
                 color: const Color(0xFFf5f5f5),
                 borderRadius: const BorderRadius.only(
@@ -155,12 +170,6 @@ class _ProfilePageState extends State<ProfilePage> {
                 image: DecorationImage(
                   image: NetworkImage(item['image'] as String), // 使用动态图片URL
                   fit: BoxFit.cover,
-                  // errorBuilder: (context, error, stackTrace) {
-                  //   return Container(
-                  //     color: Colors.grey[300],
-                  //     child: const Icon(Icons.error, color: Colors.grey),
-                  //   );
-                  // },
                 ),
               ),
             ),

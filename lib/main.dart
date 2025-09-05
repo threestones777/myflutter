@@ -3,7 +3,9 @@ import 'package:provider/provider.dart';
 import './pages/language_provider.dart';
 import './pages/home_page.dart';
 import './pages/second_page.dart';
-import './video.dart';
+import './pages/photo.dart';
+import './pages/html.dart';
+import 'pages/video.dart';
 
 void main() {
   runApp(
@@ -29,6 +31,15 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (context) => HomePage(),
         '/second': (context) => SecondPage(),
+        '/photo': (context) => ImagePickerWidget(),
+        '/html': (context) {
+          // 从路由参数中获取视频地址
+          final arguments = ModalRoute.of(context)!.settings.arguments
+              as Map<String, dynamic>?;
+          final url = arguments?['url'] as String? ?? '';
+          final title = arguments?['title'] as String? ?? '';
+          return WebViewPage(title: title, url: url);
+        },
         '/video': (context) {
           // 从路由参数中获取视频地址
           final arguments = ModalRoute.of(context)!.settings.arguments

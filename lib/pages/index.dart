@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'language_provider.dart';
 import './carousel.dart';
 import './hot_events.dart';
+import './notes.dart';
 
 class Index extends StatefulWidget {
   @override
@@ -11,7 +12,7 @@ class Index extends StatefulWidget {
 
 class _IndexState extends State<Index> with TickerProviderStateMixin {
   late TabController _tabController;
-  List tabs = ["新闻", "历史", "图片"];
+  List tabs = ["笔记", "历史", "图片"];
   // 在_IndexState类中添加一个AnimationController
   late AnimationController _animationController;
   late Animation<double> _fadeAnimation;
@@ -121,25 +122,13 @@ class _IndexState extends State<Index> with TickerProviderStateMixin {
             controller: _tabController,
             tabs: tabs.map((e) => Tab(text: e)).toList(),
           ),
-
-          // Display the selected tab index
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 10),
-            child: Text("当前选中的Tab: ${tabs[_tabController.index]}"),
-          ),
-
           // Tab content - using IndexedStack to maintain state
           SizedBox(
             height: 300, // 设置一个固定高度以确保内容可滚动
             child: IndexedStack(
               index: _tabController.index,
               children: [
-                Center(
-                  child: FadeTransition(
-                    opacity: _fadeAnimation,
-                    child: Text("新闻内容", style: TextStyle(fontSize: 24)),
-                  ),
-                ),
+                NotesPage(),
                 Center(child: Text("历史内容")),
                 Center(child: Text("图片内容")),
               ],

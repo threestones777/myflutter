@@ -13,15 +13,16 @@ dependencies:
     sdk: flutter
   flutter_localizations:
     sdk: flutter
-  intl: ^0.20.2
+  intl: any
   url_launcher: ^6.3.2
-
   english_words: ^4.0.0
   provider: ^6.0.0
   dio: ^5.0.0
   carousel_slider: ^5.1.1
   video_player: ^2.10.0
   chewie: ^1.12.1
+  image_picker: ^1.2.0
+  webview_flutter: ^4.13.0
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -29,7 +30,16 @@ dev_dependencies:
   flutter_lints: ^2.0.0
 
 flutter:
+  generate: true
   uses-material-design: true
   assets:
     # 或整个目录：
     - assets/
+    - lib/l10n/
+
+flutter_intl:
+  enabled: true
+  class_name: S # 生成的本地化类名
+  main_locale: zh # 主要语言
+  arb_dir: lib/l10n/arb # ARB文件存放目录
+  output_dir: lib/l10n/generated # 生成的代码存放目录

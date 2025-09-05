@@ -1,0 +1,28 @@
+{
+  "hello": "Hello",
+  "welcome": "Welcome to Flutter",
+  "settings": "Settings",
+  "language": "Language",
+  "theme": "Theme",
+  "logout": "Logout",
+  "userWelcome": "Hello {name}!",
+  "unreadMessages": "You have {count} unread messages",
+  "@userWelcome": {
+    "description": "Welcome message with user name",
+    "placeholders": {
+      "name": {
+        "type": "String",
+        "example": "John"
+      }
+    }
+  },
+  "@unreadMessages": {
+    "description": "Message count notification",
+    "placeholders": {
+      "count": {
+        "type": "int",
+        "example": "5"
+      }
+    }
+  }
+}
